@@ -16,13 +16,13 @@ body {
 }
 
 .notespace .sidebar {
-   width: 120px;
+   width: 140px;
    height: 100%;
 
    background-color: var(--sidebar-bg);
 
    box-sizing: border-box;
-   padding: 0.5rem;
+   padding: 0.5rem 1rem;
 }
 
 .notespace .sidebar .header {

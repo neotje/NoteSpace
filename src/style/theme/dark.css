@@ -1,7 +1,9 @@
 :root {
    --text: #e9e9e9;
 
-   --sidebar-bg: #e5e5e521;
+   --background: #000000;
+
+   --sidebar-bg: #e5e5e513;
    --sidebar-seperator: #ffffff4d;
 
    --icon-button-hover: #ffffff38;

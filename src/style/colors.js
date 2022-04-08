@@ -1,1 +1,1 @@
-exports.background = '#0C0B1A'
+exports.background = '#000000'
