@@ -1,0 +1,59 @@
+html {
+   font-family: "Roboto";
+   font-size: 12px;
+}
+
+body {
+   height: 100vh;
+   color: var(--text);
+}
+
+.notespace {
+   height: 100%;
+   width: 100%;
+
+   display: flex;
+}
+
+.notespace .sidebar {
+   width: 120px;
+   height: 100%;
+
+   background-color: var(--sidebar-bg);
+
+   box-sizing: border-box;
+   padding: 0.5rem;
+}
+
+.notespace .sidebar .header {
+   width: 100%;
+   height: fit-content;
+
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+
+   border-bottom: 1px solid var(--sidebar-seperator);
+
+   padding-bottom: 2px;
+}
+
+.notespace .sidebar .header h1 {
+   margin: 0;
+   
+   font-size: 1rem;
+   text-transform: uppercase;
+   letter-spacing: 0.075rem;
+}
+
+.notespace .sidebar .header .material-icons {
+   font-size: 1.33rem;
+   border-radius: 4px;
+   padding: 2px;
+}
+
+.notespace .sidebar .header .material-icons:hover {
+   background-color: var(--icon-button-hover);
+   cursor: pointer;
+}

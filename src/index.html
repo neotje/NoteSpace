@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>NoteSpace</title>
+
+   <link rel="stylesheet" href="style/normalize.css">
+   <link rel="stylesheet" href="../node_modules/material-icons/iconfont/material-icons.css">
+   <link rel="stylesheet" href="../node_modules/@fontsource/roboto/index.css">
+
+   <link rel="stylesheet" href="style/theme/dark.css">
+   <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
-   
+   <div class="notespace">
+      <div class="sidebar">
+         <div class="header">
+            <h1>NoteSpace</h1>
+            <span class="material-icons">
+               library_add
+            </span>
+         </div>
+      </div>
+      <div class="content">
+         <canvas id="space"></canvas>
+         <div class="note"></div>
+      </div>
+   </div>
 </body>
+
 </html>
