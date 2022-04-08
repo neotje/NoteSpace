@@ -18,6 +18,7 @@
   "dependencies": {
     "@fontsource/roboto": "^4.5.5",
     "material-icons": "^1.10.8",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "uuid": "^8.3.2"
   }
 }
