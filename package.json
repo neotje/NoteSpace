@@ -10,7 +10,8 @@
   "author": "Neo Hop",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^18.0.3"
+    "electron": "^18.0.3",
+    "jsdoc": "^3.6.10"
   },
   "dependencies": {
     "@fontsource/roboto": "^4.5.5",

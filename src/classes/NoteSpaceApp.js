@@ -18,6 +18,8 @@ class NoteSpaceApp extends EventEmitter {
 
    /**
     * create a NoteSpace.
+    * 
+    * @fires NoteSpaceApp#spaceCreated
     * @param {string} name name for the new NoteSpace
     * @returns {NoteSpace} newly created NoteSpace
     */
@@ -25,42 +27,70 @@ class NoteSpaceApp extends EventEmitter {
       var newSpace = new NoteSpace(name, [], [])
       this.spaces.push(newSpace)
 
+      /**
+       * spaceCreated event.
+       * 
+       * @event NoteSpaceApp#spaceCreated
+       * @type {NoteSpace}
+       */
       this.emit("spaceCreated", newSpace)
-      
+
       return newSpace
    }
-   
+
    /**
     * open space by index
+    * 
+    * @fires NoteSpaceApp#spaceOpened
     * @param {number} spaceNum 
     * @returns {?NoteSpace} returns activated space.
     */
    openSpace(spaceNum) {
       var activatedSpace
 
-      if(spaceNum > -1 && spaceNum < this.spaces.length) {
+      if (spaceNum > -1 && spaceNum < this.spaces.length) {
          this.activeSpace = spaceNum
          activatedSpace = this.spaces[spaceNum]
       } else {
          this.activeSpace = -1
       }
 
-      this.emit("spaceOpened", this.activeSpace, activatedSpace)
+      /**
+       * space opened event.
+       * @event NoteSpaceApp#spaceOpened
+       * @type {object}
+       * @property {number} activeSpace space index
+       * @property {?NoteSpace} activatedSpace space object
+       */
+      this.emit("spaceOpened", {
+         activeSpace: this.activeSpace, 
+         activatedSpace: activatedSpace
+      })
    }
-   
+
    /**
     * remove space by index
+    * 
+    * @fires NoteSpaceApp#spaceRemoved
     * @param {number} spaceNum 
     * @returns {?NoteSpace} removed space.
     */
    removeSpace(spaceNum) {
       var removedSpace
 
-      if(spaceNum > -1 && spaceNum < this.spaces.length) {
+      if (spaceNum > -1 && spaceNum < this.spaces.length) {
          removedSpace = this.spaces.splice(spaceNum, 1)[0]
       }
 
-      this.emit("spaceRemoved", spaceNum, removedSpace)
+      /**
+       * space removed event.
+       * 
+       * @event NoteSpaceApp#spaceRemoved
+       * @type {object}
+       * @property {number} spaceNum index of removed space.
+       * @property {?NoteSpace} removedSpace object of removed space.
+       */
+      this.emit("spaceRemoved", {spaceNum, removedSpace})
 
       return removedSpace
    }
