@@ -10,11 +10,16 @@ class NoteSpaceDoesNotExist extends Error {
 
 class NoteSpaceApp extends EventEmitter {
    spaces
+
+   /**
+    * id of the active space
+    * @type {?NoteSpaceId}
+    */
    activeSpace
 
    /**
     * @param {NoteSpace[]} spaces
-    * @param {?string} activeSpace active space by index
+    * @param {?NoteSpaceId} activeSpace active space by id
     */
    constructor(spaces, activeSpace) {
       super()
@@ -24,7 +29,7 @@ class NoteSpaceApp extends EventEmitter {
    }
 
    /**
-    * @param {string} id Space id to look for.
+    * @param {NoteSpaceId} id Space id to look for.
     * @throws {NoteSpaceDoesNotExist}
     * @returns {?NoteSpace}
     */
@@ -33,13 +38,13 @@ class NoteSpaceApp extends EventEmitter {
    }
 
    /**
-    * @param {string} id Space id to look for.
+    * @param {NoteSpaceId} id Space id to look for.
     * @throws {NoteSpaceDoesNotExist}
     * @returns {number} index of space.
     */
    getSpaceIndexById(id) {
       for (let index = 0; index < this.spaces.length; index++) {
-         const element = this.spaces[index];
+         const space = this.spaces[index];
 
          if(space.id == id) return index
       }
@@ -72,7 +77,7 @@ class NoteSpaceApp extends EventEmitter {
     * open space by index
     * 
     * @fires NoteSpaceApp#spaceOpened
-    * @param {string} id 
+    * @param {NoteSpaceId} id 
     * @returns {?NoteSpace} returns activated space.
     */
    openSpace(id) {
@@ -91,12 +96,12 @@ class NoteSpaceApp extends EventEmitter {
     * remove space by index
     * 
     * @fires NoteSpaceApp#spaceRemoved
-    * @param {string} id 
+    * @param {NoteSpaceId} id 
     * @returns {?NoteSpace} removed space.
     */
    removeSpace(id) {
       var spaceIndex = this.getSpaceIndexById(id)
-      removedSpace = this.spaces.splice(spaceIndex, 1)[0]
+      var removedSpace = this.spaces.splice(spaceIndex, 1)[0]
 
       /**
        * space removed event.
