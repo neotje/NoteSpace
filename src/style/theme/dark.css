@@ -6,5 +6,12 @@
    --sidebar-bg: #e5e5e513;
    --sidebar-seperator: #ffffff4d;
 
+   --sidebar-input-bg: #ffffff38;
+   --sidebar-input-border: #ffffff8e;
+   --sidebar-input-border-focus: #ffffffef;
+
+   --sidebar-item-hover: #ffffff27;
+   --sidebar-item-active: #ffffff38;
+
    --icon-button-hover: #ffffff38;
 }

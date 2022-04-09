@@ -6,6 +6,7 @@ html {
 body {
    height: 100vh;
    color: var(--text);
+   caret-color: var(--text);
 }
 
 .notespace {
@@ -56,4 +57,40 @@ body {
 .notespace .sidebar .header .material-icons:hover {
    background-color: var(--icon-button-hover);
    cursor: pointer;
+}
+
+.notespace .sidebar .items {
+   margin-top: 4px;
+}
+
+.notespace .sidebar .items .item {
+   height: 1rem;
+   width: 100%;
+   padding: 0.25rem 0;
+}
+
+.notespace .sidebar .items .active {
+   background-color: var(--sidebar-item-active) !important;
+}
+
+.notespace .sidebar .items .item:hover {
+   background-color: var(--sidebar-item-hover);
+   cursor: pointer;
+}
+
+.notespace .sidebar .create {
+   width: 100%;
+
+   box-sizing: border-box;
+   padding: 0.25rem 2px;
+
+   background-color: var(--sidebar-input-bg);
+   color: var(--text);
+
+   border: 1px solid var(--sidebar-input-border);
+}
+
+.notespace .sidebar .create:focus-visible {
+   outline: none;
+   border-color: var(--sidebar-input-border-focus);
 }
