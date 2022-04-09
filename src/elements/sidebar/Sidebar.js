@@ -26,6 +26,26 @@ class SideBar extends NoteSpaceElement {
       this.noteSpaceList = this.rootElement.querySelector(".items")
    }
 
+
+
+   /**
+    * @param {HTMLElement} element 
+    * @returns {SideBar}
+    */
+    static factory(element) {
+      const sideBar = new SideBar(document.querySelector(".notespace .sidebar"))
+
+      let renderSideBar = () => sideBar.renderNoteSpaceList(window.noteSpaceApp.spaces, window.noteSpaceApp.activeSpace)
+      renderSideBar()
+      window.noteSpaceApp.on("spaceCreated", renderSideBar)
+      window.noteSpaceApp.on("spaceRemoved", renderSideBar)
+      window.noteSpaceApp.on("spaceOpened", renderSideBar)
+
+      return sideBar
+   }
+
+
+
    /**
     * @returns {HTMLInputElement}
     */
@@ -44,12 +64,25 @@ class SideBar extends NoteSpaceElement {
    getNoteSpaceItem(noteSpace) {
       var item = document.createElement("div")
       item.classList.add("item")
-      item.addEventListener("click", (mouseEvent) => this.onNoteSpaceOpen(mouseEvent.target))
+      item.addEventListener("mouseup", (mouseEvent) => this.onNoteSpaceItemClicked(mouseEvent))
 
       item.id = noteSpace.id
       item.innerHTML = noteSpace.name
 
       return item
+   }
+
+   /**
+    * 
+    * @param {MouseEvent} mouseEvent 
+    */
+   onNoteSpaceItemClicked(mouseEvent) {
+      console.log(mouseEvent)
+      if (mouseEvent.button == 0) {
+         this.onNoteSpaceOpen(mouseEvent.target)
+      } else if (mouseEvent.button == 2 && confirm("Are you sure you want to delete the NoteSpace?")) {
+         window.noteSpaceApp.removeSpace(mouseEvent.target.id)
+      }
    }
 
    /**
@@ -62,7 +95,7 @@ class SideBar extends NoteSpaceElement {
       for (const noteSpace of noteSpaces) {
          var item = this.getNoteSpaceItem(noteSpace)
 
-         if(noteSpace.id == openSpace) {
+         if (noteSpace.id == openSpace) {
             item.classList.add("active")
          }
 

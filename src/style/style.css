@@ -1,6 +1,7 @@
 html {
    font-family: "Roboto";
    font-size: 12px;
+   overflow: hidden;
 }
 
 body {
@@ -93,4 +94,9 @@ body {
 .notespace .sidebar .create:focus-visible {
    outline: none;
    border-color: var(--sidebar-input-border-focus);
+}
+
+.notespace .content {
+   height: 100%;
+   width: 100%;
 }
