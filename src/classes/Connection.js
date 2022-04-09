@@ -1,3 +1,9 @@
+/**
+ * @typedef {Object} ConnectionObject
+ * @property {NoteId} from
+ * @property {NoteId} to
+ */
+
 class Connection {
    from
    to
@@ -10,6 +16,16 @@ class Connection {
    constructor(from, to) {
       this.from = from
       this.to = to
+   }
+
+   /**
+    * @returns {ConnectionObject}
+    */
+   toObject() {
+      return {
+         from: this.from,
+         to: this.to
+      }
    }
 }
 

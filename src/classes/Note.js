@@ -3,6 +3,14 @@
  * @typedef {string} NoteId
  */
 
+/**
+ * @typedef {Object} NoteObject
+ * @property {NoteId} id
+ * @property {string} name
+ * @property {string} content
+ * @property {number[]} position
+ */
+
 class Note {
    id
    name
@@ -20,6 +28,18 @@ class Note {
       this.name = name
       this.content = content
       this.position = position
+   }
+
+   /**
+    * @returns {NoteObject}
+    */
+   toObject() {
+      return {
+         id: this.id,
+         name: this.name,
+         content: this.content,
+         position: this.position
+      }
    }
 }
 

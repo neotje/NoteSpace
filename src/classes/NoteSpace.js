@@ -7,6 +7,14 @@ const { v4: uuidv4 } = require("uuid")
  * @typedef {string} NoteSpaceId
  */
 
+/**
+ * @typedef {Object} NoteSpaceObject
+ * @property {NoteSpaceId} id
+ * @property {string} name
+ * @property {NoteObject[]} notes
+ * @property {ConnectionObject[]} connections
+ */
+
 class NoteDoesNotExist extends Error {
    constructor() {
       super("Note does not exist in this NoteSpace.")
@@ -100,6 +108,18 @@ class NoteSpace {
          var newConnection = new Connection(from, to)
          this.connections.push(newConnection)
          return newConnection
+      }
+   }
+
+   /**
+    * @returns {NoteSpaceObject}
+    */
+   toObject() {
+      return {
+         id: this.id,
+         name: this.name,
+         notes: this.notes.map((note) => note.toObject()),
+         connections: this.connections.map((connection) => connection.toObject())
       }
    }
 }
